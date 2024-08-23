@@ -6,6 +6,10 @@ body {
     rgb(255, 255, 255) 92.2%
   );
 }
+
+body .night-mode {
+  background: linear-gradient(to right, #868f96 0%, #596164 100%);
+}
 a {
   color: grey;
   transition: all 150ms ease-in-out;

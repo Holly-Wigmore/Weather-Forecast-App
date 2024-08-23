@@ -11,6 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
@@ -29,16 +30,17 @@
       <main>
         <div class="forecast-data">
           <div>
-            <h1 class="city">London</h1>
+            <h1 class="city"></h1>
             <p class="forecast-details">
-              Day and Time, Condition
+              <span id="current-date">Day and Time</span>
+              <span id="condition">, Condition</span>
               <br />
               Humidity: <strong>22%</strong>, Wind: <strong>22km/h</strong>
             </p>
           </div>
           <div class="temperature-container">
             <div class="forecast-icon">☀️</div>
-            <div class="forecast-temperature">22</div>
+            <div class="forecast-temperature" id="city-temperature"></div>
             <div class="forecast-unit">°C</div>
           </div>
         </div>
