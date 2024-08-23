@@ -35,6 +35,10 @@ img {
   width: 75px;
   border-radius: 20px;
   margin: 0 5px 10px 5px;
+  transition: all 150ms ease-in-out;
+}
+img:hover {
+  transform: scale(1.2);
 }
 .search-input {
   background: rgb(255, 221, 225);
