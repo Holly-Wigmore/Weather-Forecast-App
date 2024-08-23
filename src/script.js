@@ -6,6 +6,11 @@ function updateForecast(response) {
   let windElement = document.querySelector("#wind");
   let timeElement = document.querySelector("#current-time");
   let date = new Date(response.data.time * 1000);
+  let iconElement = document.querySelector("#icon");
+  iconElement.innerHTML = `<img
+                class="forecast-icon"
+                src="${response.data.condition.icon_url}"
+              />`;
   cityElement.innerHTML = response.data.city;
   temperatureElement.innerHTML = Math.round(response.data.temperature.current);
   conditionElement.innerHTML = response.data.condition.description;
@@ -34,6 +39,7 @@ function formatDate(date) {
   if (hours < 10) {
     hours = `o${hours}`;
   }
+
   return `${day} ${hours}:${minutes}`;
 }
 

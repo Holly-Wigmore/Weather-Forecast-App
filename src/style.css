@@ -6,10 +6,6 @@ body {
     rgb(255, 255, 255) 92.2%
   );
 }
-
-body .night-mode {
-  background: linear-gradient(to right, #868f96 0%, #596164 100%);
-}
 a {
   color: grey;
   transition: all 150ms ease-in-out;
@@ -88,13 +84,13 @@ main {
   display: flex;
 }
 .forecast-icon {
-  font-size: 44px;
-  margin-top: 22px;
+  width: 88px;
+  height: 88px;
+  margin-top: 12px;
 }
 .forecast-temperature {
   font-size: 88px;
   font-weight: bold;
-  margin-left: 10px;
 }
 .forecast-unit {
   margin-top: 16px;
