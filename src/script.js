@@ -1,8 +1,40 @@
 function updateForecast(response) {
   let temperatureElement = document.querySelector("#city-temperature");
-  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
   let cityElement = document.querySelector(".city");
+  let conditionElement = document.querySelector("#condition");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  let timeElement = document.querySelector("#current-time");
+  let date = new Date(response.data.time * 1000);
   cityElement.innerHTML = response.data.city;
+  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+  conditionElement.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
+  windElement.innerHTML = `${response.data.wind.speed}km/h`;
+  timeElement.innerHTML = formatDate(date);
+}
+
+function formatDate(date) {
+  let minutes = date.getMinutes();
+  let hours = date.getHours();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  if (hours < 10) {
+    hours = `o${hours}`;
+  }
+  return `${day} ${hours}:${minutes}`;
 }
 
 function searchCity(city) {
@@ -17,39 +49,7 @@ function useSearchInput(event) {
   searchCity(searchInput.value);
 }
 
-function formatDate(date) {
-  let minutes = date.getMinutes();
-  let hours = date.getHours();
-  let day = date.getDay();
-
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-
-  let formattedDay = days[day];
-  return `${formattedDay} ${hours}:${minutes}`;
-}
-
 let searchFormElement = document.querySelector(".search-form");
 searchFormElement.addEventListener("submit", useSearchInput);
-
-let currentDateELement = document.querySelector("#current-date");
-let currentDate = new Date();
-
-currentDateELement.innerHTML = formatDate(currentDate);
 
 searchCity("London");
