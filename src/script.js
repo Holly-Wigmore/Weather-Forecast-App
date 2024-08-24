@@ -37,7 +37,7 @@ function formatDate(date) {
     minutes = `0${minutes}`;
   }
   if (hours < 10) {
-    hours = `o${hours}`;
+    hours = `0${hours}`;
   }
 
   return `${day} ${hours}:${minutes}`;
@@ -54,8 +54,30 @@ function useSearchInput(event) {
   let searchInput = document.querySelector(".search-input");
   searchCity(searchInput.value);
 }
+function displayForecast() {
+  let dailyForecast = document.querySelector("#daily-forecast");
+
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `<div class="weather-forecast-day">
+            <div class="weather-forecast-date">${day}</div>
+            <div class="weather-forecast-icon">☀️</div>
+            <div class="weather-forecast-temperatures">
+              <div class="weather-forecast-temp"><strong>15°C</strong></div>
+              <div class="weather-forecast-temp">12°C</div>
+            </div>
+          </div>`;
+  });
+
+  dailyForecast.innerHTML = forecastHtml;
+}
 
 let searchFormElement = document.querySelector(".search-form");
 searchFormElement.addEventListener("submit", useSearchInput);
 
 searchCity("London");
+displayForecast();
